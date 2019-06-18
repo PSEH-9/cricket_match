@@ -2,23 +2,29 @@ package com.sapient.test.request;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MatchScoreRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String apiKey;
+	
+	@JsonProperty("apikey")
+	private String apikey;
+	
+	@JsonProperty("matchId")
 	private String matchId;
 
-	public MatchScoreRequest(String apiKey, String matchId) {
-		this.apiKey = apiKey;
+	public MatchScoreRequest(String apikey, String matchId) {
+		this.apikey = apikey;
 		this.matchId = matchId;
 	}
 
-	public String getApiKey() {
-		return apiKey;
+	public String getApikey() {
+		return apikey;
 	}
 
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
+	public void setApikey(String apikey) {
+		this.apikey = apikey;
 	}
 
 	public String getMatchId() {

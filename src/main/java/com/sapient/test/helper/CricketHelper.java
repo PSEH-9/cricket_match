@@ -51,6 +51,7 @@ public class CricketHelper {
 
 			HttpEntity<String> entity = new HttpEntity<>(objectMapper.writeValueAsString(matchDetailRequest), headers);
 			logger.info("invoking endpoint "+endpoint+" with headers "+entity);
+			
 			MatchDataResponse matchDataResponse = restTemplateUtil.invoke(endpoint, HttpMethod.POST, entity,
 					MatchDataResponse.class);
 			logger.info("matchDataResponse "+matchDataResponse);

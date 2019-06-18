@@ -2,23 +2,27 @@ package com.sapient.test.request;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MatchDetailRequest implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String apiKey;
+	
+	@JsonProperty("apikey")
+	private String apikey;
 
-	public MatchDetailRequest(String apiKey) {
-		this.apiKey = apiKey;
+	public MatchDetailRequest(String apikey) {
+		this.apikey = apikey;
 	}
 
 	public String getApiKey() {
-		return apiKey;
+		return apikey;
 	}
 
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
+	public void setApiKey(String apikey) {
+		this.apikey = apikey;
 	}
 	
 	

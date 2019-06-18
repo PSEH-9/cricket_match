@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.sapient.test.exceptions.InternalServerException;
 import com.sapient.test.exceptions.InvalidMatchIdException;
@@ -39,15 +40,17 @@ public class CricketServiceImpl implements CricketService {
 				logger.info("matchScoreResonse " + matchScoreResonse);
 				String stat = matchScoreResonse.getStat();
 				logger.info("stat " + stat);
-				String winnerTeam = "";
-				if (stat.contains(cricketResponse.getTeam1())) {
-					winnerTeam = cricketResponse.getTeam1();
-				} else if (stat.contains(cricketResponse.getTeam2())) {
-					winnerTeam = cricketResponse.getTeam2();
-				} else {
-					winnerTeam = stat;
+				if (!StringUtils.isEmpty(stat)) {
+					String winnerTeam = "";
+					if (stat.contains(cricketResponse.getTeam1())) {
+						winnerTeam = cricketResponse.getTeam1();
+					} else if (stat.contains(cricketResponse.getTeam2())) {
+						winnerTeam = cricketResponse.getTeam2();
+					} else {
+						winnerTeam = stat;
+					}
+					cricketResponse.setWiningTeamScore(winnerTeam);
 				}
-				cricketResponse.setWiningTeamScore(winnerTeam);
 			} else {
 				cricketResponse.setWiningTeamScore(AppConstant.MATCH_NOT_STARTED);
 			}
