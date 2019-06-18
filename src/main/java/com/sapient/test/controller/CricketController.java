@@ -22,6 +22,7 @@ public class CricketController {
 
 	private @Autowired CricketService cricketService;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@GetMapping(path = "v1/sapient/cricket_score/{matchId}", produces = "application/json")
 	public ResponseEntity<?> getMatchDetails(@PathVariable(name = "matchId") String matchId) throws InvalidMatchIdException, InternalServerException {
 		logger.info("getMatchDetails with matchid "+matchId);
